@@ -3,11 +3,11 @@
 // 3. Создать функцию, которая принимает 2 числа и возвращает их сумму. 
 // Полностью типизировать параметры, значение, возвращаемое функцией.
 
-export function calculate(a: number, b: number): number {
+export function addNumbers(a: number, b: number): number {
   return a + b;
 }
 
-console.log(calculate(5, 7));
+console.log(addNumbers(5, 7));
 
 // 4. Создать переменную status, которая может быть только: "loading", "success", "error".
 
@@ -16,7 +16,8 @@ let status: Status;
 
 // 5. Создать переменную textFormat, которая может быть только: 'uppercase', 'lowercase', 'capitalize'".
 
-let textFormat: 'uppercase' | 'lowercase' | 'capitalize';
+type TextFormat = 'uppercase' | 'lowercase' | 'capitalize';
+let textFormat: TextFormat;
 
 // 6. Создать интерфейс, который описывает юзера. Поля на ваш выбор. Одно поле должно быть опциональным.
 
@@ -36,13 +37,17 @@ interface IChild extends IUser {
 // 8. Создать функцию, которая принимает строку и вариант, 
 // как именно форматировать строку (задание №5) и на основе этого возвращает форматированную строку.
 
-function nickname(text: string, format: typeof textFormat): string {
-  if (format === 'uppercase') return text.toUpperCase();
-  if (format === 'lowercase') return text.toLowerCase();
-  return text[0].toUpperCase() + text.slice(1).toLowerCase();
+function formatText(text: string, format: TextFormat): string {
+  if (format === 'uppercase') {
+    return text.toUpperCase();
+  } else if (format === 'lowercase') {
+    return text.toLowerCase();
+  } else { 
+    return text[0].toUpperCase() + text.slice(1).toLowerCase();
+  }
 }
 
-console.log(nickname('name', 'uppercase'));
+console.log(formatText('name', 'uppercase'));
 
 // 9. Создать функцию, которая принимает строку и символ,
 // возвращает строку без переданного символа. (есть специальные методы для этого, гуглим)
