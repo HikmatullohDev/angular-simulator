@@ -3,11 +3,11 @@
 // 3. Создать функцию, которая принимает 2 числа и возвращает их сумму. 
 // Полностью типизировать параметры, значение, возвращаемое функцией.
 
-export function addNumbers(a: number, b: number): number {
+export function sumNumbers(a: number, b: number): number {
   return a + b;
 }
 
-console.log(addNumbers(5, 7));
+console.log(sumNumbers(5, 7));
 
 // 4. Создать переменную status, которая может быть только: "loading", "success", "error".
 
