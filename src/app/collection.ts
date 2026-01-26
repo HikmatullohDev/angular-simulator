@@ -7,7 +7,7 @@ export class Collection<T> {
   }
 
   getAll(): T[] {
-    return [...this.elements];
+    return this.elements;
   }
 
   getElement(index: number): T | undefined {

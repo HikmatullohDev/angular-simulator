@@ -9,7 +9,6 @@ import { Collection, nameCollection, numberCollection } from './collection';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-
 export class AppComponent {
 
   companyName: string = 'румтибет';
@@ -22,7 +21,7 @@ export class AppComponent {
 
   isPrimaryColor(color: Color): boolean {
     const primaryColors: Color[] = [Color.RED, Color.GREEN, Color.BLUE];
-    return primaryColors.includes(color)
+    return primaryColors.includes(color);
   }
 
   saveLastVisit(): void {
@@ -31,7 +30,7 @@ export class AppComponent {
   }
 
   updateVisitsCount(): void {
-    const storedValue = Number(localStorage.getItem('visitsCount') || '0');
+    const storedValue: number = Number(localStorage.getItem('visitsCount') || 0);
     localStorage.setItem('visitsCount', String(storedValue + 1));
   }
 
