@@ -9,29 +9,29 @@
         <img src="/images/logo.svg" alt="logo">
       </div>
       <nav class="navigation fs-18 semi-bold white">
-        <a href="#">Главная</a>
-        <a href="#">Про гида</a>
-        <a href="#">Программа тура</a>
-        <a href="#">Стоимость</a>
-        <a href="#">Блог</a>
-        <a href="#">Контакты</a>
-        <button class="consultation-button fs-16 semi-bold white">Консультация</button>
+        <a id="nav-link-home" href="#">Главная</a>
+        <a id="nav-link-about-guide" href="#">Про гида</a>
+        <a id="nav-link-tour-program" href="#">Программа тура</a>
+        <a id="nav-link-price" href="#">Стоимость</a>
+        <a id="nav-link-blog" href="#">Блог</a>
+        <a id="nav-link-contacts" href="#">Контакты</a>
+        <button id="consultation-btn" class="consultation-button fs-16 semi-bold white">Консультация</button>
       </nav>
     </div>
-  
+
     <div class="header-widget container">
       <div class="header-widget-main">
         @if (showTimer) {
           <p class="header-timer">{{ currentTime }}</p>
         } @else {
           <div class="header-counter">
-            <button class="decrement-btn" (click)="decrementCounter()" [disabled]="counter === 0">-</button>
+            <button id="decrement-btn" class="decrement-btn" (click)="decrementCounter()" [disabled]="counter === 0">-</button>
             <span>{{ counter }}</span>
-            <button class="increment-btn" (click)="incrementCounter()">+</button>
+            <button id="increment-btn" class="increment-btn" (click)="incrementCounter()">+</button>
           </div>
         }
       </div>
-      <button class="toggle-widget-btn white" (click)="toggleHeaderWidget()">
+      <button id="toggle-widget-btn" class="toggle-widget-btn white" (click)="toggleHeaderWidget()">
         {{ showTimer ? 'Показать счётчик' : 'Показать таймер' }}
       </button>
     </div>
@@ -72,7 +72,7 @@
         </div>
 
         <div class="input-banner">
-          <button class="fs-16 bold third-color" [disabled]="!isFormValid()">Найти программу</button>
+          <button id="search-program-btn" class="fs-16 bold third-color" [disabled]="!isFormValid()">Найти программу</button>
         </div>
       </div>
       <div class="live-input-block white">
@@ -89,8 +89,8 @@
   <section class="intro-section">
     <div class="intro-section-container container">
       <div class="intro-media">
-        <button class="player-btn">
-          <img src="/images/player-icon.svg" alt="Иконка" width="25" height="25">
+        <button id="player-btn" class="player-btn">
+          <img src="/images/player-icon.svg" alt="Иконка" width="50" height="50">
         </button>
         <div class="image-wrapper">
           <img src="/images/mountain-1.png" class="img-back">
@@ -104,7 +104,7 @@
           <h1 class="extra-bold primary-color">Исследуйте все горные массивы мира вместе с нами</h1>
         </div>
         <p class="regular fs-18 primary-color">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur" и занялся его поисками в классической латинской литературе.</p>
-        <button class="tour-program-btn white">Программа тура</button>
+        <button id="tour-program-btn" class="tour-program-btn white">Программа тура</button>
       </div>
     </div>
 
@@ -121,9 +121,7 @@
         @for (card of cards; track card.title) {
           <div class="condition-cards">
             <div class="icon-wrapper">
-              <img [src]="'/images/' + card.iconBackground + '.svg'" alt="icon-bg">
               <img [src]="'/images/' + card.icon + '.svg'" alt="icon">
-
             </div>
             <div class="condition-description"> 
               <div class="fs-18 bold primary-color">{{ card.title }}</div>
@@ -131,26 +129,14 @@
             </div>
           </div>
         }
-        <button class="program-price-btn fs-16 semi-bold white">Стоимость программ</button>
+        <button id="program-price-btn" class="program-price-btn fs-16 semi-bold white">Стоимость программ</button>
       </div>
 
       <div class="conditions-gallery">
-
-        <div class="gallery-image">
-          <img src="/images/gallery1.png" alt="image 1">
-        </div>
-
-        <div class="gallery-image">
-          <img src="/images/gallery2.png" alt="image 2">
-        </div>
-
-        <div class="gallery-image">
-          <img src="/images/gallery3.png" alt="image 3">
-        </div>
-
-        <div class="gallery-image">
-          <img src="/images/gallery4.png" alt="image 4">
-        </div>
+        <img src="/images/lake-mountain.png" alt="lake-mountain">
+        <img src="/images/canyon.png" alt="canyon">
+        <img src="/images/snowmobile.png" alt="snowmobile">
+        <img src="/images/mountain-river.png" alt="mountain-river">
       </div>
     </div>
   </div>

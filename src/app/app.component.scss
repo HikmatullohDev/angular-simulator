@@ -255,20 +255,16 @@
   
   .player-btn {
     cursor: pointer;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
     border: none;
-    background-color: white;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
     z-index: 3;
     object-fit: cover;
     position: absolute;
     margin: 301px 0px 0px 280px;
-    background-color: rgba(255, 255, 255, 0.781);
-  }
-
-  .player-btn img {
-    padding: 6px 0px 0px 3px;
+    padding: 0;
+    opacity: 0.8;
   }
 
   .intro-description {
@@ -326,17 +322,8 @@
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(2, 1fr);
       gap: 10px;
-      width: 500px;
-      height: 500px;
-
-      .gallery-image {
-        overflow: hidden;
-      }
-
-      .gallery-image img {
-        width: 100%;
-        height: 100%;
-      }
+      width: 510px;
+      height: 510px;
     }
 
     .conditions-block {
@@ -378,13 +365,9 @@
           position: relative;
           height: 50px;
           width: 50px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
 
           img {
             position: absolute;
-            object-fit: cover;
           }
         }
 
