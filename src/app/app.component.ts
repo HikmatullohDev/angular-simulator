@@ -30,17 +30,17 @@ export class AppComponent {
     {
       title: 'Опытный гид',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      icon: 'guide-icon',
+      icon: 'people-green-icon',
     },
     {
       title: 'Безопасный поход',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      icon: 'shield-icon',
+      icon: 'shield-blue-icon',
     },
     {
       title: 'Лояльные цены',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      icon: 'price-tag-icon',
+      icon: 'price-tag-yellow-icon',
     }
   ]
 
@@ -59,20 +59,6 @@ export class AppComponent {
 
   isFormValid(): boolean {
     return !!(this.tourDate && this.tourLocation && this.tourParticipants);
-  }
-
-  incrementCounter(): void {
-    this.counter++;
-  }
-  
-  decrementCounter(): void {
-    if (this.counter > 0) {
-      this.counter--;
-    }
-  }
-
-  toggleHeaderWidget(): void {
-    this.showTimer = !this.showTimer;
   }
 
   private isPrimaryColor(color: Color): boolean {

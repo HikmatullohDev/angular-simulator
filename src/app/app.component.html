@@ -9,12 +9,12 @@
         <img src="/images/logo.svg" alt="logo">
       </div>
       <nav class="navigation fs-18 semi-bold white">
-        <a id="nav-link-home" href="#">Главная</a>
-        <a id="nav-link-about-guide" href="#">Про гида</a>
-        <a id="nav-link-tour-program" href="#">Программа тура</a>
-        <a id="nav-link-price" href="#">Стоимость</a>
-        <a id="nav-link-blog" href="#">Блог</a>
-        <a id="nav-link-contacts" href="#">Контакты</a>
+        <a id="link-home" href="#">Главная</a>
+        <a id="link-about-guide" href="#">Про гида</a>
+        <a id="link-tour-program" href="#">Программа тура</a>
+        <a id="link-price" href="#">Стоимость</a>
+        <a id="link-blog" href="#">Блог</a>
+        <a id="link-contacts" href="#">Контакты</a>
         <button id="consultation-btn" class="consultation-button fs-16 semi-bold white">Консультация</button>
       </nav>
     </div>
@@ -25,13 +25,13 @@
           <p class="header-timer">{{ currentTime }}</p>
         } @else {
           <div class="header-counter">
-            <button id="decrement-btn" class="decrement-btn" (click)="decrementCounter()" [disabled]="counter === 0">-</button>
+            <button id="decrement-btn" class="decrement-btn" (click)="counter = counter - 1" [disabled]="counter === 0">-</button>
             <span>{{ counter }}</span>
-            <button id="increment-btn" class="increment-btn" (click)="incrementCounter()">+</button>
+            <button id="increment-btn" class="increment-btn" (click)="counter = counter + 1">+</button>
           </div>
         }
       </div>
-      <button id="toggle-widget-btn" class="toggle-widget-btn white" (click)="toggleHeaderWidget()">
+      <button id="toggle-widget-btn" class="toggle-widget-btn white" (click)="showTimer = !showTimer">
         {{ showTimer ? 'Показать счётчик' : 'Показать таймер' }}
       </button>
     </div>
@@ -59,7 +59,7 @@
           <span class="fs-14 regular">укажите дату</span>
         </div>
         <div class="input-banner">
-          <select class="fs-16 bold white" [(ngModel)]="tourParticipants">
+          <select class="fs-16 bold white" id="tour-participants" [(ngModel)]="tourParticipants">
             <option [ngValue]="null">Участники</option>
             <option [value]="4">4</option>
             <option [value]="5">5</option>
@@ -77,6 +77,7 @@
       </div>
       <div class="live-input-block white">
         <input 
+          id="live-input"
           type="text"
           [(ngModel)]="liveInputText"
           placeholder="Живой инпут"
