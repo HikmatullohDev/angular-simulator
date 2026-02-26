@@ -1,53 +1,144 @@
-<header class="header">
-  <div class="container header-container">
-    <div>
-      <img src="/images/logo.svg" alt="logo">
-    </div>
-    <nav class="navigation fs-18 semi-bold white">
-      <a href="#">Главная</a>
-      <a href="#">Про гида</a>
-      <a href="#">Программа тура</a>
-      <a href="#">Стоимость</a>
-      <a href="#">Блог</a>
-      <a href="#">Контакты</a>
-      <button class="consultation-button fs-16 semi-bold white">Консультация</button>
-    </nav>
+@if (isLoading) {
+  <div class="page-loader" aria-label="Загрузка страницы">
+    <img class="page-loader-icon" src="/images/loading-icon.svg" alt="Загрузка">
   </div>
-  <div class="main-info">
-    <div class="banner"></div>
-    <div class="main-title container white regular">
-      Насладись прогулкой в горах <br>с командой единомышленников
+} @else {
+  <header class="header">
+    <div class="container header-container">
+      <div>
+        <img src="/images/logo.svg" alt="logo">
+      </div>
+      <nav class="navigation fs-18 semi-bold white">
+        <a id="link-home" href="#">Главная</a>
+        <a id="link-about-guide" href="#">Про гида</a>
+        <a id="link-tour-program" href="#">Программа тура</a>
+        <a id="link-price" href="#">Стоимость</a>
+        <a id="link-blog" href="#">Блог</a>
+        <a id="link-contacts" href="#">Контакты</a>
+        <button id="consultation-btn" class="consultation-button fs-16 semi-bold white">Консультация</button>
+      </nav>
     </div>
-    <div class="order-tour-section container fs-16">
-      <div class="input-banner">
-        <select class="fs-16 bold white">
-          <option>Локация для тура</option>
-          <option>Занзибар</option>
-          <option>Пекин</option>
-          <option>Чили</option>
-          <option>Швейцария</option>
-        </select>
-        <span class="fs-14 regular">выберите из списка</span>
+
+    <div class="header-widget container">
+      <div class="header-widget-main">
+        @if (showTimer) {
+          <p class="header-timer">{{ currentTime }}</p>
+        } @else {
+          <div class="header-counter">
+            <button id="decrement-btn" class="decrement-btn" (click)="counter = counter - 1" [disabled]="counter === 0">-</button>
+            <span>{{ counter }}</span>
+            <button id="increment-btn" class="increment-btn" (click)="counter = counter + 1">+</button>
+          </div>
+        }
       </div>
-      <div class="input-banner">
-        <input class="fs-16 bold" type="text" placeholder="Дата похода">
-        <span class="fs-14 regular">укажите диапазон</span>
+      <button id="toggle-widget-btn" class="toggle-widget-btn white" (click)="showTimer = !showTimer">
+        {{ showTimer ? 'Показать счётчик' : 'Показать таймер' }}
+      </button>
+    </div>
+
+    <div class="main-info">
+      <div class="banner"></div>
+      <div class="main-title container white regular">
+        Насладись прогулкой в горах <br>с командой единомышленников
       </div>
-      <div class="input-banner">
-        <select class="fs-16 bold white">
-          <option>Участники</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-        </select>
-        <span class="fs-14 regular">минимум 4 человека</span>
+
+      <div class="order-tour-section container fs-16">
+        <div class="input-banner">
+          <select class="fs-16 bold white" id="tour-location" [(ngModel)]="tourLocation">
+            <option value="">Локация для тура</option>
+            <option value="zanzibar">Занзибар</option>
+            <option value="pekin">Пекин</option>
+            <option value="chili">Чили</option>
+            <option value="switzerland">Швейцария</option>
+          </select>
+          <span class="fs-14 regular">выберите из списка</span>
+        </div>
+
+        <div class="input-banner">
+          <input class="fs-16 bold white" type="date" placeholder="Дата похода" [(ngModel)]="tourDate">
+          <span class="fs-14 regular">укажите дату</span>
+        </div>
+        <div class="input-banner">
+          <select class="fs-16 bold white" id="tour-participants" [(ngModel)]="tourParticipants">
+            <option [ngValue]="null">Участники</option>
+            <option [value]="4">4</option>
+            <option [value]="5">5</option>
+            <option [value]="6">6</option>
+            <option [value]="7">7</option>
+            <option [value]="8">8</option>
+            <option [value]="9">9</option>
+          </select>
+          <span class="fs-14 regular">выберите из списка</span>
+        </div>
+
+        <div class="input-banner">
+          <button id="search-program-btn" class="fs-16 bold third-color" [disabled]="!isFormValid()">Найти программу</button>
+        </div>
       </div>
-      <div class="input-banner">
-        <button class="fs-16 bold third-color">Найти программу</button>
+      <div class="live-input-block white">
+        <input 
+          id="live-input"
+          type="text"
+          [(ngModel)]="liveInputText"
+          placeholder="Живой инпут"
+        >
+        <span class="live-output white">{{ liveInputText }}</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="intro-section">
+    <div class="intro-section-container container">
+      <div class="intro-media">
+        <button id="player-btn" class="player-btn">
+          <img src="/images/player-icon.svg" alt="Иконка" width="50" height="50">
+        </button>
+        <div class="image-wrapper">
+          <img src="/images/mountain-1.png" class="img-back">
+          <img src="/images/mountain-2.png" class="img-front">
+        </div>
+      </div>
+
+      <div class="intro-description">
+        <div class="intro-title">
+          <p class="secondary-color">о нашем походе</p>
+          <h1 class="extra-bold primary-color">Исследуйте все горные массивы мира вместе с нами</h1>
+        </div>
+        <p class="regular fs-18 primary-color">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur" и занялся его поисками в классической латинской литературе.</p>
+        <button id="tour-program-btn" class="tour-program-btn white">Программа тура</button>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="conditions-section">
+    <div class="conditions-container container">
+      <div class="conditions-block">
+        <div class="conditions fs-18">
+          <p class="fs-24 regular secondary-color">наше предложение</p>
+          <h1 class="extra-bold primary-color">Лучшие программы для тебя</h1>
+          <p class="fs-18 regular primary-color">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
+        </div>
+        @for (card of cards; track card.title) {
+          <div class="condition-cards">
+            <div class="icon-wrapper">
+              <img [src]="'/images/' + card.icon + '.svg'" alt="icon">
+            </div>
+            <div class="condition-description"> 
+              <div class="fs-18 bold primary-color">{{ card.title }}</div>
+              <div class="fs-14 regular">{{ card.description }}</div>
+            </div>
+          </div>
+        }
+        <button id="program-price-btn" class="program-price-btn fs-16 semi-bold white">Стоимость программ</button>
+      </div>
+
+      <div class="conditions-gallery">
+        <img src="/images/lake-mountain.png" alt="lake-mountain">
+        <img src="/images/canyon.png" alt="canyon">
+        <img src="/images/snowmobile.png" alt="snowmobile">
+        <img src="/images/mountain-river.png" alt="mountain-river">
       </div>
     </div>
   </div>
-</header>
+}
