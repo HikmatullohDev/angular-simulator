@@ -4,6 +4,7 @@
   </div>
 } @else {
   <header class="header">
+    <div class="blackout"></div>
     <div class="container header-container">
       <div>
         <img src="/images/logo.svg" alt="logo">
@@ -15,7 +16,7 @@
         <a id="link-price" href="#">Стоимость</a>
         <a id="link-blog" href="#">Блог</a>
         <a id="link-contacts" href="#">Контакты</a>
-        <button id="consultation-btn" class="consultation-button fs-16 semi-bold white">Консультация</button>
+        <button id="consultation-btn" class="consultation-button fs-16 semi-bold third-color">Консультация</button>
       </nav>
     </div>
 
@@ -31,7 +32,7 @@
           </div>
         }
       </div>
-      <button id="toggle-widget-btn" class="toggle-widget-btn white" (click)="showTimer = !showTimer">
+      <button id="toggle-widget-btn" class="toggle-widget-btn third-color" (click)="showTimer = !showTimer">
         {{ showTimer ? 'Показать счётчик' : 'Показать таймер' }}
       </button>
     </div>
@@ -72,7 +73,7 @@
         </div>
 
         <div class="input-banner">
-          <button id="search-program-btn" class="fs-16 bold third-color" [disabled]="!isFormValid()">Найти программу</button>
+          <button id="search-program-btn" class="fs-16 bold white" [disabled]="!isFormValid()">Найти программу</button>
         </div>
       </div>
       <div class="live-input-block white">
@@ -105,13 +106,19 @@
           <h1 class="extra-bold primary-color">Исследуйте все горные массивы мира вместе с нами</h1>
         </div>
         <p class="regular fs-18 primary-color">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur" и занялся его поисками в классической латинской литературе.</p>
-        <button id="tour-program-btn" class="tour-program-btn white">Программа тура</button>
+        <button
+          id="tour-program-btn"
+          class="tour-program-btn white"
+          (click)="messageService.addMessage(messageType.SUCCESS, 'Done')"
+        >
+        Программа тура
+        </button>
       </div>
     </div>
 
   </section>
 
-  <div class="conditions-section">
+  <section class="conditions-section">
     <div class="conditions-container container">
       <div class="conditions-block">
         <div class="conditions fs-18">
@@ -130,7 +137,13 @@
             </div>
           </div>
         }
-        <button id="program-price-btn" class="program-price-btn fs-16 semi-bold white">Стоимость программ</button>
+        <button
+          id="program-price-btn"
+          class="program-price-btn fs-16 semi-bold white"
+          (click)="messageService.addMessage(messageType.WARN, 'Calculation will be later')"
+        >
+        Стоимость программ
+        </button>
       </div>
 
       <div class="conditions-gallery">
@@ -140,5 +153,115 @@
         <img src="/images/mountain-river.png" alt="mountain-river">
       </div>
     </div>
+  </section>
+
+  <section class="tariffs-section">
+    <div class="tariffs-container container">
+      <div class="tariffs-title">
+        <p class="fs-24 regular secondary-color">по версии отдыхающих</p>
+        <h1 class="extra-bold primary-color">Популярные направления</h1>
+      </div>
+
+      <div class="tariffs-cards">
+        @for (tariff of tariffCards; track tariff.id) {
+          <div class="tariff-card">
+            <img
+              class="tariff-card-image"
+              [src]="'/images/' + tariff.image + '.png'"
+              [alt]="tariff.title"
+            >
+
+            <div class="tariff-card-rating">
+              <span class="tariff-card-rating-star fs-24 secondary-color">★</span>
+              <span class="tariff-card-rating-value fs-14 bold third-color">{{ tariff.rating }}</span>
+            </div>
+
+            <div class="tariff-card-bottom">
+              <div class="tariff-card-text">
+                <h3 class="tariff-card-title bold fs-24">{{ tariff.title }}</h3>
+                <p class="tariff-card-subtitle regular fs-14">{{ tariff.subtitle }}</p>
+              </div>
+              <div class="tariff-card-price bold fs-20 white">
+                {{ tariff.price }} $
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      <button 
+        id="tariff-rating-btn"
+        class="tariff-rating-btn fs-16 semi-bold white"
+        (click)="messageService.addMessage(messageType.INFO, 'Loading')"
+      >
+      Рейтинг направлений
+      </button>
+    </div>
+  </section>
+
+  <section class="blog-section">
+    <div class="blog-container container">
+      <div class="blog-title">
+        <p class="fs-24 regular secondary-color">делимся впечатлениями</p>
+        <h1 class="extra-bold primary-color">Блог о путешествиях</h1>
+      </div>
+
+      <div class="blog-cards">
+        @for (blog of blogCards; track blog.id) {
+          <div class="blog-card">
+            <img
+              class="blog-card-image"
+              [src]="'/images/' + blog.image + '.png'"
+              [alt]="blog.title"
+            >
+            <div class="blog-card-content">
+              <a [href]="blog.linkText" id="blog-card-title" class="blog-card-title bold fs-24 primary-color">{{ blog.title }}</a>
+              <p class="blog-card-description regular fs-14 primary-color">{{ blog.description }}</p>
+              <div class="blog-card-footer">
+                <span class="blog-card-date fs-14 bold secondary-color">
+                  {{ blog.date }}
+                </span>
+                <a [href]="blog.linkText" id="blog-card-link" class="blog-card-link fs-14 bold third-color">читать статью</a>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <button 
+        id="other-materials-btn" 
+        class="other-materials-btn fs-16 semi-bold white"
+        (click)="messageService.addMessage(messageType.ERROR, 'No connect')"
+      >
+      Другие материалы
+      </button>
+    </div>
+  </section>
+} 
+
+<div class="notification-message-wrapper">
+
+  @for (message of messageService.messageList; track message) {
+    <ng-container [ngTemplateOutlet]="notificationMessage" [ngTemplateOutletContext]="{ message: message }"></ng-container>
+  }
+
+</div>
+
+<ng-template #notificationMessage let-notification="message">
+  <div class="message">
+    <div class="message-wrapper">
+      <div class="message-info-container">
+        <img src="/images/mail-icon.svg" alt="иконка сообщения" width="40px" height="40px">
+        <div class="message-title">
+          <span class="fs-16 bold">{{ notification.type }}</span>
+          <span class="fs-14 regular">{{ notification.text }}</span>
+        </div>
+      </div>
+      <div class="close-message-wrapper">
+        <button [id]="'close-' + notification.text" class="close-message"
+          (click)="messageService.closeMessage(notification)">
+          <img src="/images/close-message-icon.svg" alt="иконка крестика" width="20px" height="20px">
+        </button>
+      </div>
+    </div>
   </div>
-}
+</ng-template>
