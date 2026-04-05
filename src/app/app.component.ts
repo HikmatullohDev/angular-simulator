@@ -23,7 +23,7 @@ export class AppComponent {
   readonly companyName: string = 'румтибет';
   readonly companyCategory: string = 'туризм';
 
-  public messageService: MessageService = inject(MessageService);
+  messageService: MessageService = inject(MessageService);
   private localStorageService: LocalStorageService = inject(LocalStorageService)
 
   messageType: typeof MessageType = MessageType;

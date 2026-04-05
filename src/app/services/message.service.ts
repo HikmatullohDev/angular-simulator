@@ -19,7 +19,7 @@ export class MessageService {
   }
 
   closeMessage(currentMessage: IMessage): void {
-    this.messageList = this.messageList.filter((message: IMessage): boolean => message !== currentMessage)
+    this.messageList = this.messageList.filter((message: IMessage) => message !== currentMessage)
   }
 
 }
