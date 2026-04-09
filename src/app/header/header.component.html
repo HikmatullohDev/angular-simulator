@@ -1,0 +1,38 @@
+<header class="header">
+  <div class="blackout"></div>
+  <div class="container header-container">
+    <div>
+      <img src="/images/logo.svg" alt="logo">
+    </div>
+    <nav class="navigation fs-18 semi-bold white">
+      @for (page of navigationList; track page.id) {
+        <a
+          [id]="'navigate-page-' + page.id"
+          [routerLink]="page.path"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          {{ page.title }}
+        </a>
+      }
+      <button id="consultation-btn" class="consultation-button fs-16 semi-bold third-color">Консультация</button>
+    </nav>
+  </div>
+
+  <div class="header-widget container">
+    <div class="header-widget-main">
+      @if (showTimer) {
+        <p class="header-timer">{{ currentTime }}</p>
+      } @else {
+        <div class="header-counter">
+          <button id="decrement-btn" class="decrement-btn" (click)="counter = counter - 1" [disabled]="counter === 0">-</button>
+          <span>{{ counter }}</span>
+          <button id="increment-btn" class="increment-btn" (click)="counter = counter + 1">+</button>
+        </div>
+      }
+    </div>
+    <button id="toggle-widget-btn" class="toggle-widget-btn third-color" (click)="showTimer = !showTimer">
+      {{ showTimer ? 'Показать счётчик' : 'Показать таймер' }}
+    </button>
+  </div>
+</header>
