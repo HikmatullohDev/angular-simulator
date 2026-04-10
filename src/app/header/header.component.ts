@@ -21,11 +21,13 @@ export class HeaderComponent {
   showTimer: boolean = true;
 
   navigationList: INavigation[] = [
-    { id: 1,
+    {
+      id: 1,
       title: 'Главная',
       path: '/'
     },
-    { id: 2,
+    {
+      id: 2,
       title: 'Пользователи',
       path: '/users'
     }
