@@ -1,1 +1,81 @@
-<p class="users-page-text">This is users page, wait for update</p>
+<div class="users-page">
+  <div class="users-page-container">
+    <p class="users-page-title extra-bold third-color">Список Пользователей</p>
+    <div class="users-grid">
+
+      @for (user of userList$ | async; track user.id) {
+
+        <div class="user-card">
+          <div class="user-card-container">
+
+            <div class="user-card-header">
+              <h3 class="fs-26 extra-bold third-color">{{ user.name }}</h3>
+              <span class="fs-15 bold">{{ '@' + user.username }}</span>
+            </div>
+
+            <div class="user-card-body">
+
+              <div class="info-section">
+                <h4 class="section-title fs-12 extra-bold">Контакты</h4>
+                <div class="info-row">
+                  <p class="info-label fs-14 regular">Эл. почта:</p>
+                  <span class="fs-14 bold beige-color">{{ user.email }}</span>
+                </div>
+                <div class="info-row">
+                  <p class="info-label fs-14 regular">Телефон:</p>
+                  <span class="fs-14 bold third-color">{{ user.phone }}</span>
+                </div>
+                <div class="info-row">
+                  <p class="info-label fs-14 regular">Веб-сайт:</p>
+                  <span class="fs-14 bold beige-color">{{ user.website }}</span>
+                </div>
+              </div>
+
+              <div class="info-section">
+                <h4 class="section-title fs-12 extra-bold">Адрес проживания</h4>
+                <div class="info-row">
+                  <p class="info-label fs-14 regular">Город:</p>
+                  <span class="fs-14 bold third-color">{{ user.address.city }}</span>
+                </div>
+                <div class="info-row">
+                  <p class="info-label fs-14 regular">Улица:</p>
+                  <span class="fs-14 bold third-color">{{ user.address.street }}</span>
+                </div>
+                <div class="info-row">
+                  <p class="info-label fs-14 regular">Индекс:</p>
+                  <span class="fs-14 bold third-color">{{ user.address.zipcode }}</span>
+                </div>
+                <div class="info-row">
+                  <p class="info-label fs-14 regular">Координаты:</p>
+                  <div class="geo-coords">
+                    <span class="geo-badge fs-12 bold third-color">{{ user.address.geo.lat }}</span>
+                    <span class="geo-badge fs-12 bold third-color">{{ user.address.geo.lng }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="info-section">
+                <h4 class="section-title fs-12 extra-bold">Место работы</h4>
+                <div class="info-row">
+                  <p class="info-label fs-14 regular">Компания:</p>
+                  <span class="fs-14 bold third-color">{{ user.company.name }}</span>
+                </div>
+                <div class="info-row">
+                  <p class="info-label fs-14 regular">Миссия:</p>
+                  <span class="fs-14 bold third-color citation">{{ user.company.catchPhrase }}</span>
+                </div>
+                <div class="info-row">
+                  <p class="info-label fs-14 regular">Специализация:</p>
+                  <span class="fs-14 bold third-color">{{ user.company.bs }}</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <span class="empty-message fs-22 extra-bold">Нет пользователей для отображения</span>
+      }
+    </div>
+  </div>
+</div>
