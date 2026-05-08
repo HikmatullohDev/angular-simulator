@@ -1,6 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { IUser } from '../../interfaces/IUser';
 import { UserService } from '../services/user.service';
@@ -13,8 +12,8 @@ import { UserService } from '../services/user.service';
 })
 export class UsersPageComponent implements OnInit {
 
-  private userService = inject(UserService);
-  private destroyRef = inject(DestroyRef);
+  private userService: UserService = inject(UserService);
+
   userList$: Observable<IUser[]> = this.userService.users$;
 
   ngOnInit(): void {
@@ -22,7 +21,6 @@ export class UsersPageComponent implements OnInit {
       .loadUsers()
       .pipe(
         tap((users: IUser[]) => this.userService.setUsers(users)),
-        takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
   }

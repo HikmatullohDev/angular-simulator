@@ -4,6 +4,7 @@ import { IUser } from '../../interfaces/IUser';
 import { LoaderService } from './loader.service';
 import { MessageService } from './message.service';
 import { UserApiService } from './user-api.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,7 @@ export class UserService {
   private userApiService: UserApiService = inject(UserApiService);
   private loaderService: LoaderService = inject(LoaderService);
   private messageService: MessageService = inject(MessageService);
+
   private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
   users$: Observable<IUser[]> = this.usersSubject.asObservable();
 
@@ -20,8 +22,8 @@ export class UserService {
     this.usersSubject.next(users);
   }
 
-  getUsers(): Observable<IUser[]> {
-    return this.users$;
+  getUsers(): IUser[] {
+    return this.usersSubject.getValue();
   }
 
   loadUsers(): Observable<IUser[]> {
@@ -29,7 +31,7 @@ export class UserService {
 
     return this.userApiService.getUsers()
     .pipe(
-      catchError(error => {
+      catchError(() => {
         this.messageService.showError('Ошибка загрузки пользователей');
         return of([]);
       }),

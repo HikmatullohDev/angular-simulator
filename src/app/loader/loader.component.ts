@@ -10,7 +10,8 @@ import { LoaderService } from '../services/loader.service';
   styleUrl: './loader.component.scss',
 })
 export class LoaderComponent {
-  loaderService: LoaderService = inject(LoaderService);
-  isLoading$: Observable<boolean> = this.loaderService.loader$;
-}
 
+  private loaderService: LoaderService = inject(LoaderService);
+  isLoading$: Observable<boolean> = this.loaderService.isLoading$;
+
+}
