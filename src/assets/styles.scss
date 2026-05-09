@@ -17,6 +17,7 @@
   --secondary-color: #F2BE22;
   --third-color: #1A3E3E;
   --white-color: #FDFDFD;
+  --beige-color: #d4a373;
 }
 
 .white {
@@ -35,8 +36,20 @@
   color: #1A3E3E;
 }
 
+.beige-color {
+  color: #d4a373;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
 .fs-14 {
   font-size: 14px;
+}
+
+.fs-15 {
+  font-size: 15px;
 }
 
 .fs-16 {
@@ -59,6 +72,10 @@
   font-size: 24px;
 }
 
+.fs-26 {
+  font-size: 26px;
+}
+
 .regular {
   font-weight: 400;
 }
@@ -73,5 +90,10 @@
 
 .extra-bold {
   font-weight: 800;
+}
+
+.citation {
+  color: #667c7c;
+  font-style: italic;
 }
 
