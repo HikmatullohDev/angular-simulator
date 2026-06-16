@@ -1,0 +1,93 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-wrapper">
+    <h2>User:</h2>
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+
+    <div>
+      <label for="user-name">Username:</label>
+      <input id="user-name" type="text" formControlName="username">
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email">
+    </div>
+
+    <div>
+      <label for="phone">Phone:</label>
+      <input id="phone" type="tel" formControlName="phone">
+    </div>
+
+    <div>
+      <label for="website">Website:</label>
+      <input id="website" type="text" formControlName="website" placeholder="Необязательное поле">
+    </div>
+  </div>
+
+  <div class="form-wrapper">
+    <h2>Address:</h2>
+
+    <div formGroupName="address">
+      <div>
+        <label for="address-city">Address city:</label>
+        <input id="address-city" type="text" formControlName="city">
+      </div>
+
+      <div>
+        <label for="address-suite">Address suite:</label>
+        <input id="address-suite" type="text" formControlName="suite" placeholder="Необязательное поле">
+      </div>
+
+      <div>
+        <label for="address-zipcode">Address zipcode:</label>
+        <input id="address-zipcode" type="tel" formControlName="zipcode">
+      </div>
+
+      <div>
+        <label for="address-street">Address street:</label>
+        <input id="address-street" type="text" formControlName="street">
+      </div>
+
+      <div formGroupName="geo">
+        <div>
+          <label for="address-geo-lat">Address geo lat:</label>
+          <input id="address-geo-lat" type="tel" formControlName="lat">
+        </div>
+
+        <div>
+          <label for="address-geo-lng">Address geo lng:</label>
+          <input id="address-geo-lng" type="tel" formControlName="lng">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="form-wrapper">
+    <h2>Company:</h2>
+
+    <div formGroupName="company">
+      <div>
+        <label for="company-name">Company name:</label>
+        <input id="company-name" formControlName="name" type="text">
+      </div>
+
+      <div>
+        <label for="company-catchPhrase">Company catchPhrase:</label>
+        <input id="company-catchPhrase" formControlName="catchPhrase" type="text" placeholder="Необязательное поле">
+      </div>
+
+      <div>
+        <label for="company-bs">Company bs:</label>
+        <input id="company-bs" formControlName="bs" type="text" placeholder="Необязательное поле">
+      </div>
+
+    </div>
+  </div>
+
+  <button type="submit">Создать пользователя</button>
+</form>
