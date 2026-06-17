@@ -30,18 +30,18 @@ export class UserService {
   }
 
   deleteUser(user: IUser): void {
-    const updatedUsers = this.getUsers().filter(u => u.id !== user.id);
+    const updatedUsers: IUser[] = this.getUsers().filter((u: IUser) => u.id !== user.id);
     this.setUsers(updatedUsers);
   }
 
   addUser(user: IUser): void {
-    const currentUsers = this.getUsers();
+    const currentUsers: IUser[] = this.getUsers();
     this.setUsers([...currentUsers, user]); 
   }
 
   loadUsers(): Observable<IUser[]> {
 
-    const usersListStorage = this.localStorageService.getValue<IUser[]>('users');
+    const usersListStorage: IUser[] = this.localStorageService.getValue<IUser[]>('users') || [];
 
     if (usersListStorage && usersListStorage.length > 0) {
       return of(usersListStorage);

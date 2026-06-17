@@ -25,10 +25,10 @@ export class UsersPageComponent implements OnInit {
     this.userList$,
     this.filter$
   ]).pipe(
-      map(([users, filter]: [IUser[], string]) => {
-        return users.filter((user: IUser) => user.name.trim().toLowerCase().includes(filter));
-      })
-    );
+    map(([users, filter]: [IUser[], string]) => {
+      return users.filter((user: IUser) => user.name.trim().toLowerCase().includes(filter));
+    })
+  );
 
   ngOnInit(): void {
     this.userService

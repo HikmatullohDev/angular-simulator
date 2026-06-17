@@ -40,8 +40,9 @@ export class UserCreateComponent {
   });
 
   onSubmit(): void {
-    if (this.userForm.invalid) 
+    if (this.userForm.invalid) {
       return this.messageService.showError('Не все поля верно заполнены!');
+    }
 
     const newUser: IUser = {...this.userForm.getRawValue(), id: Date.now()};
     this.createUser.emit(newUser);
