@@ -1,0 +1,91 @@
+.user-card {
+  width: 440px;
+  background-color: var(--white-color);
+  border-radius: 5px;
+  border-top: 4px solid var(--beige-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.user-card-container {
+  padding: 35px 30px 50px 30px;
+}
+
+.user-card-header {
+  margin-bottom: 30px;
+
+  h3 {
+    margin: 0 0 3px 0;
+  }
+
+  span {
+    color: var(--beige-color);
+  }
+}
+
+.user-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title {
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e2e8f0;
+  color: var(--third-color);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+
+  .info-label {
+    margin: 0;
+    color: #667c7c;
+  }
+}
+
+.geo-coords {
+  display: flex;
+  gap: 6px;
+}
+
+.geo-badge {
+  border: 1px solid #e2e8f0;
+  background-color: #f4f7f5;
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.citation {
+  font-style: italic;
+}
+
+.citation::before {
+  content: '«';
+}
+.citation::after {
+  content: '»';
+}
+
+.empty-message {
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  background: #b15757;
+  color: white;
+  width: 558px;
+  height: 105px;
+  border-radius: 20px;
+}

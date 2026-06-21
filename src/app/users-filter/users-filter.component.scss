@@ -1,0 +1,40 @@
+.users-search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 20px auto;
+
+  &::before {
+    content: '🔍';
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    pointer-events: none;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--third-color);
+    background-color: var(--white-color);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &::placeholder {
+      color: #aab4b4;
+      font-weight: 400;
+    }
+
+    &:focus {
+      border-color: var(--beige-color);
+      box-shadow: 0 4px 12px rgba(212, 163, 115, 0.2);
+    }
+  }
+}
