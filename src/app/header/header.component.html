@@ -34,5 +34,28 @@
     <button id="toggle-widget-btn" class="toggle-widget-btn third-color" (click)="showTimer = !showTimer">
       {{ showTimer ? 'Показать счётчик' : 'Показать таймер' }}
     </button>
+
+    <div class="toggle-wrapper">
+      <p-toggle-switch 
+        id="dark-mode-swithcer" 
+        [ngModel]="themeService.isDarkMode$| async"
+        (onChange)="toggleDarkMode($event)"
+      >
+        <ng-template #handle>
+          <fa-icon [icon]="(themeService.isDarkMode$| async) ? faMoon : faSun" />
+        </ng-template>
+      </p-toggle-switch>
+    </div>
+
+    <div class="theme-toggle-wrapper">
+      <p-selectbutton 
+        id="select-theme-btn"
+        optionLabel="name"
+        optionValue="theme"
+        [options]="themeService.themeOptions"
+        [ngModel]="themeService.theme$ | async"
+        (onChange)="onButtonClick($event.value)"/>
+    </div>
+
   </div>
 </header>

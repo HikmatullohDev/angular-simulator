@@ -19,6 +19,43 @@
   word-wrap: break-word;
 }
 
+:host::ng-deep {
+  .fa-star {
+    width: 17px;
+    height: 16px;
+    color: var(--secondary-color);
+  }
+
+  .fa-people-group, .fa-shield, .fa-tag {
+    width: 50px;
+    height: 45px;
+  }
+
+  .fa-people-group {
+    color: #45766A;
+    background-color: #E5EEEB;
+  }
+
+  .fa-shield {
+    color: #6276AA;
+    background-color: #E3E6EE;
+  }
+
+  .fa-tag {
+    color: #F2BE22;
+    background-color: #F3F1E1;
+  }
+}
+
+.icon-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 4px !important;
+}
+
 .order-tour-section {
   margin-bottom: 30px;
   height: 161px;
@@ -124,6 +161,7 @@
   justify-content: center;
   align-items: center;
   height: 726px;
+  background-color: var(--white-color);
 
   .intro-media {
     width: 480px;
@@ -278,19 +316,12 @@
 
       .condition-cards {
         display: flex;
-        margin-top: 40px;
-        gap: 16px;
+        width: 580px;
+        transition: all 0.3s ease;
         align-items: center;
-
-        .icon-wrapper {
-          position: relative;
-          height: 50px;
-          width: 50px;
-
-          img {
-            position: absolute;
-          }
-        }
+        margin-top: 40px;
+        margin-bottom: 40px;
+        cursor: pointer;
 
         .condition-description {
           height: 54px;
@@ -313,6 +344,7 @@
 .tariffs-section {
   display: flex;
   justify-content: center;
+  background-color: var(--white-color);
 
   .tariffs-container {
     display: flex;
@@ -569,6 +601,7 @@
   display: flex;
   justify-content: center;
   padding: 80px 0;
+  background-color: var(--white-color);
 
   .photo-report-container {
     display: flex;

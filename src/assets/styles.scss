@@ -6,18 +6,26 @@
   box-sizing: border-box;
 }
 
-.container {
-  display: block;
-  width: 1180px;
-  margin: 0 auto;
-}
-
 :root {
   --primary-color: #18121E;
   --secondary-color: #F2BE22;
   --third-color: #1A3E3E;
   --white-color: #FDFDFD;
   --beige-color: #d4a373;
+}
+
+.app-dark {
+  --primary-color:  #594e48;
+  --secondary-color: #a59767;
+  --third-color: #3b8c8c;
+  --white-color: #594e48;
+  --beige-color: #5d3c1d;
+}
+
+.container {
+  display: block;
+  width: 1180px;
+  margin: 0 auto;
 }
 
 .white {

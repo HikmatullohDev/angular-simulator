@@ -8,10 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { Collection, nameCollection, numberCollection } from '../collection';
 import { LocalStorageService } from '../services/local-storage.service';
 import { Color } from '../../enum/Color';
+import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
+import { faPlay, faPeopleGroup, faStar, faShield, faTag } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule],
+  imports: [FormsModule, FontAwesomeModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -25,22 +27,27 @@ export class HomePageComponent {
   tourDate!: string;
   tourParticipants: number | null = null;
   liveInputText!: string;
+  faPlay: IconDefinition = faPlay;
+  faPeopleGroup: IconDefinition = faPeopleGroup;
+  faShield: IconDefinition = faShield;
+  faTag: IconDefinition = faTag;
+  faStar: IconDefinition = faStar;
 
   cards: ICard[] = [
     {
       title: 'Опытный гид',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      icon: 'people-green-icon',
+      icon: faPeopleGroup,
     },
     {
       title: 'Безопасный поход',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      icon: 'shield-blue-icon',
+      icon: faShield,
     },
     {
       title: 'Лояльные цены',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      icon: 'price-tag-yellow-icon',
+      icon: faTag,
     }
   ]
 

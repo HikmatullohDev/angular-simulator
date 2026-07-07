@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { FontAwesomeModule, IconDefinition } from '@fortawesome/angular-fontawesome';
+import { faTelegram, faPinterest, faSkype, faVk } from '@fortawesome/free-brands-svg-icons'
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [FontAwesomeModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
@@ -23,5 +25,10 @@ export class FooterComponent {
     'Медицинская страховка, гарантии безопасности',
     'Если вы врач - загляните сюда'
   ]
+
+  faTelegram: IconDefinition = faTelegram;
+  faVk: IconDefinition = faVk;
+  faPinterest: IconDefinition = faPinterest;
+  faSkype: IconDefinition = faSkype;
 
 }
