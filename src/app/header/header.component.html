@@ -35,14 +35,15 @@
       {{ showTimer ? 'Показать счётчик' : 'Показать таймер' }}
     </button>
 
+    @let isDarkMode = themeService.isDarkMode$ | async;
     <div class="toggle-wrapper">
       <p-toggle-switch 
         id="dark-mode-swithcer" 
-        [ngModel]="themeService.isDarkMode$| async"
+        [ngModel]="isDarkMode"
         (onChange)="toggleDarkMode($event)"
       >
         <ng-template #handle>
-          <fa-icon [icon]="(themeService.isDarkMode$| async) ? faMoon : faSun" />
+          <fa-icon [icon]="isDarkMode ? faMoon : faSun" />
         </ng-template>
       </p-toggle-switch>
     </div>
