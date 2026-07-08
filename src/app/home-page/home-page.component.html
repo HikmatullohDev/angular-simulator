@@ -53,7 +53,7 @@
   <div class="intro-section-container container">
     <div class="intro-media">
       <button id="player-btn" class="player-btn">
-        <img src="/images/player-icon.svg" alt="Иконка" width="50" height="50">
+        <fa-icon [icon]="faPlay" alt="Иконка" />
       </button>
       <div class="image-wrapper">
         <img src="/images/mountain-1.png" class="img-back">
@@ -86,10 +86,10 @@
         <h1 class="extra-bold primary-color">Лучшие программы для тебя</h1>
         <p class="fs-18 regular primary-color">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
       </div>
-      @for (card of cards; track card.title) {
+      @for (card of cards; track card.title; let i = $index) {
         <div class="condition-cards">
           <div class="icon-wrapper">
-            <img [src]="'/images/' + card.icon + '.svg'" alt="icon">
+            <fa-icon [icon]="card.icon" class="'icon-container icon-color-' + i" />
           </div>
           <div class="condition-description"> 
             <div class="fs-18 bold primary-color">{{ card.title }}</div>
@@ -132,7 +132,7 @@
           >
 
           <div class="tariff-card-rating">
-            <span class="tariff-card-rating-star fs-24 secondary-color">★</span>
+            <fa-icon [icon]="faStar" />
             <span class="tariff-card-rating-value fs-14 bold third-color">{{ tariff.rating }}</span>
           </div>
 
