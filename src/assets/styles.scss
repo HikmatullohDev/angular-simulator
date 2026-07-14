@@ -105,3 +105,27 @@
   font-style: italic;
 }
 
+.gradient-border {
+  position: relative;
+  border: var(--border-width) solid transparent;
+  background:
+    linear-gradient(#5c5c5c) padding-box,
+    linear-gradient(90deg, var(--gradient-colors)) border-box;
+  background-size: 100% 100%, 300% 300%;
+  background-position: 0 0, 0% 50%;
+  animation: gradientBorder 4s infinite linear;
+}
+
+@keyframes gradientBorder {
+  0% {
+    background-position: 0 0, 0% 50%;
+  }
+
+  50% {
+    background-position: 0 0, 100% 50%;
+  }
+
+  100% {
+    background-position: 0 0, 0% 50%;
+  }
+}
