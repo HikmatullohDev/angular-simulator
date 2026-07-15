@@ -5,12 +5,18 @@
     <app-user-create (createUser)="onAddUser($event)" />
     <app-users-filter (searchChange)="onSearchChange($event)" />
 
-    <div class="users-grid">
-      @for (user of filteredUsers$ | async; track user.id) {
-        <app-user-card [user]="user" (deleteUser)="deleteUser($event)" />
-      } @empty {
-        <span class="empty-message fs-22 extra-bold">Нет пользователей для отображения</span>
-      }
-    </div>
+    @if(filteredUsers$ | async; as users) {
+      <span class="users-count">
+        {{ users.length | plural: 'Пользователь' : 'Пользователя' : 'Пользователей' }}
+      </span>
+
+      <div class="users-grid">
+        @for (user of users; track user.id) {
+          <app-user-card Gradient [gradientConfiguration]="cardConfiguration" [user]="user" (deleteUser)="deleteUser($event)" />
+        } @empty {
+          <span class="empty-message fs-22 extra-bold">Нет пользователей для отображения</span>
+        }
+      </div>
+    }
   </div>
 </div>
